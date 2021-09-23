@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #bar-body {
   margin: 0;
   text-align: center;

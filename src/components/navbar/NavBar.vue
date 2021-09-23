@@ -17,9 +17,15 @@
       </el-dropdown>
     </template>
     <template v-slot:center>
-      <img :src="logo" alt="logo" />
+      <div class="center">
+        <img :src="logo" alt="logo" />
+      </div>
     </template>
-    <template v-slot:right> </template>
+    <template v-slot:right>
+      <div class="right">
+        {{spots[this.$store.state.currentSpotIndex].name}}
+      </div>
+    </template>
   </bar-body>
 </template>
 
@@ -48,7 +54,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .menu {
   width: 100%;
   height: 50px;
@@ -68,5 +74,27 @@ export default {
   color: #fff;
   font-size: 15px;
   margin-top: 15px;
+}
+
+.center {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.right {
+  text-align: center;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-weight: bolder;
+  padding-top: 15px;
+  margin: 0;
+  width: 100%;
+  height: 50px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 </style>

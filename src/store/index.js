@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     currentSpotIndex: 0,
-    currentViewIndex: 0
+    currentViewIndex: 0,
+    loading: true
   },
   mutations: {
     changeCurrentSpot(state, cur) {
@@ -11,6 +12,9 @@ export default createStore({
     },
     changeCurrentView(state, cur) {
       state.currentViewIndex = cur
+    },
+    setLoading(state, b) {
+      state.loading = b
     }
   },
   actions: {
@@ -19,6 +23,9 @@ export default createStore({
     },
     asyncChangeCurrentView(context, cur) {
       context.commit('changeCurrentView', cur)
+    },
+    asyncSetLoading(context, b) {
+      context.commit('setLoading', b)
     }
   },
   modules: {

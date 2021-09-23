@@ -2,17 +2,11 @@ import {request} from './request'
 import axios from 'axios'
 import Qs from 'qs'
 
-const url = [
-    '/spot_info/',
-    '/spot_location/',
+const compEvaUrl = [
     '/spot_score/',
     '/spot_word_frequency/',
-    '/spot_topic/',
-    '/spot_cmt/',
     '/spot_avg_score/',
-    '/spot_avg_sentiment/',
-    '/spot_baidu_tag_sentiment/',
-    '/spot_baidu_tag_wordcloud/'
+    '/spot_avg_sentiment/'
 ]
 
 export function getDataById(id) {
@@ -23,7 +17,7 @@ export function getDataById(id) {
         spot_id: id
     }
     data = Qs.stringify(data)
-    for (let item of url) {
+    for (let item of compEvaUrl) {
         requestList.push(request({
             url: '/api/v1' + item,
             method: 'post',

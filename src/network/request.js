@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const INSTANCE = axios.create({
   baseURL: 'https://api.lookvt.com',
-  timeout: 5000
+  timeout: 20000
 })
 
 export function request(config) {
