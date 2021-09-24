@@ -1,15 +1,15 @@
 <template>
-  <div id="chart2" style="width: 600px; height: 400px; margin: auto"></div>
+  <div id="chart5" style="width: 600px; height: 400px; margin: auto"></div>
 </template>
 
 <script>
 export default {
-  name: 'AvgScore',
+  name: 'SporAvgScore',
   data() {
     return {
       option: {
         title: {
-          text: '柱状图-月度综合平均得分'
+          text: '折线图-月度评分'
         },
         tooltip: {
           trigger: 'axis',
@@ -22,27 +22,22 @@ export default {
         },
         legend: {},
         xAxis: {
-          type: 'category',
           data: this.time
         },
         yAxis: {
-          type: 'value'
+            min: 0,
+            max: 5
         },
-        series: [
-          {
-            data: this.avgScore,
-            type: 'bar'
-          }
-        ]
+        series: this.spotAvgLine
       }
     }
   },
   props: {
     time: Array,
-    avgScore: Array
+    spotAvgLine: Array
   },
   mounted() {
-    this.$echarts.init(document.getElementById('chart2')).setOption(this.option)
+    this.$echarts.init(document.getElementById('chart5')).setOption(this.option)
   }
 }
 </script>

@@ -5,7 +5,11 @@
       <score :platform="platform" :score="score"></score>
       <spot-avg-score :spotAvgScore="avgViewScore"></spot-avg-score>
       <avg-score :time="time" :avgScore="avgScore"></avg-score>
-      <spot-avg-sentiment :time="time" :spotAvgSentiment="spotAvgSentiment"></spot-avg-sentiment>
+      <spot-avg-sentiment
+        :time="time"
+        :spotAvgSentiment="spotAvgSentiment"
+      ></spot-avg-sentiment>
+      <spot-avg-line :time="time" :spotAvgLine="spotAvgLine"></spot-avg-line>
     </div>
   </el-scrollbar>
 </template>
@@ -16,7 +20,8 @@ import SpotAvgScore from './charts/SpotAvgScore'
 import AvgScore from './charts/AvgScore'
 import SpotAvgSentiment from './charts/SpotAvgSentiment'
 import Score from './charts/Score'
-import {getDataById} from '@/network/compEvaluationData'
+import SpotAvgLine from './charts/SpotAvgLine'
+import { getDataById } from '@/network/compEvaluationData'
 export default {
   name: 'CompEvaluation',
   components: {
@@ -24,7 +29,8 @@ export default {
     SpotAvgScore,
     AvgScore,
     SpotAvgSentiment,
-    Score
+    Score,
+    SpotAvgLine
   },
   data() {
     return {
@@ -100,18 +106,54 @@ export default {
           return item[1]
         })
       }
+    },
+    spotAvgLine: {
+      get() {
+        return [
+          {
+            name: '景色',
+            type: 'line',
+            data: this.spotAvgScore.map(item => {
+              return item[2]
+            }),
+            itemStyle: {
+              color: '#CC4444'
+            }
+          },
+          {
+            name: '有趣度',
+            type: 'line',
+            data: this.spotAvgScore.map(item => {
+              return item[3]
+            }),
+            itemStyle: {
+              color: '#44CC44'
+            }
+          },
+          {
+            name: '性价比',
+            type: 'line',
+            data: this.spotAvgScore.map(item => {
+              return item[4]
+            }),
+            itemStyle: {
+              color: '#4444CC'
+            }
+          },
+        ]
+      }
     }
   },
   methods: {
     getData() {
-      this.data.splice(0,this.data.length)
+      this.data.splice(0, this.data.length)
       this.$store.dispatch('asyncSetLoading', true)
       this.$store.dispatch('asyncChangeCurrentView', this.index)
       getDataById(this.spots[this.$store.state.currentSpotIndex].id).then(res => {
         for (let data of res) {
           data = data.data
           if (data.status != 200) {
-            this.$route.push('/404')
+            this.$router.push('/404')
           }
           this.data.push(data.data)
         }
@@ -136,5 +178,4 @@ export default {
 .views {
   padding: 80px 100px 400px 100px;
 }
-
 </style>

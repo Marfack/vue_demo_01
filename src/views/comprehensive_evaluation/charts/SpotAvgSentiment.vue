@@ -11,6 +11,16 @@ export default {
         title: {
           text: '柱状图-月度情感值信息'
         },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'cross',
+            label: {
+              backgroundColor: '#6a7985'
+            }
+          }
+        },
+        legend: {},
         xAxis: {
           type: 'category',
           data: this.time

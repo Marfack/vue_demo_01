@@ -88,7 +88,7 @@ export default {
         for (let data of res) {
           data = data.data
           if (data.status != 200) {
-            this.$route.push('/404')
+            this.$router.push('/404')
           }
           this.data.push(data.data)
         }

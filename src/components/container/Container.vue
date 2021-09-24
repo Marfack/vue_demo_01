@@ -1,9 +1,11 @@
 <template>
   <div id="container">
     <div class="view">
-      <transition name="el-fade-in">
-        <router-view v-loading="loading" :spots="spots" :reload="reload"></router-view>
-      </transition>
+      <router-view v-slot="{ Component }" v-loading="loading" :spots="spots" :reload="reload">
+        <transition name="el-fade-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>

@@ -1,15 +1,15 @@
 <template>
-  <div id="chart2" style="width: 600px; height: 400px; margin: auto"></div>
+  <div id="spot-monthly-line" style="width: 600px; height: 400px; margin: auto"></div>
 </template>
 
 <script>
 export default {
-  name: 'AvgScore',
+  name: 'SpotMonthlyLine',
   data() {
     return {
       option: {
         title: {
-          text: '柱状图-月度综合平均得分'
+          text: '折线图-百度指数信息'
         },
         tooltip: {
           trigger: 'axis',
@@ -22,30 +22,27 @@ export default {
         },
         legend: {},
         xAxis: {
-          type: 'category',
           data: this.time
         },
         yAxis: {
-          type: 'value'
+            min: 0,
+            max: this.max
         },
-        series: [
-          {
-            data: this.avgScore,
-            type: 'bar'
-          }
-        ]
+        series: this.spotMonthlyLine
       }
     }
   },
   props: {
     time: Array,
-    avgScore: Array
+    spotMonthlyLine: Array,
+    max: Number
   },
   mounted() {
-    this.$echarts.init(document.getElementById('chart2')).setOption(this.option)
+    this.$echarts.init(document.getElementById('spot-monthly-line')).setOption(this.option)
   }
 }
 </script>
 
 <style>
+
 </style>
