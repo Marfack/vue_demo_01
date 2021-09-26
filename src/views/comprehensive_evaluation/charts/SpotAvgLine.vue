@@ -9,7 +9,8 @@ export default {
     return {
       option: {
         title: {
-          text: '折线图-月度评分'
+          text: '折线图-月度评分',
+          x: 'center'
         },
         tooltip: {
           trigger: 'axis',
@@ -20,7 +21,11 @@ export default {
             }
           }
         },
-        legend: {},
+        legend: {
+          orient: 'vertical',
+          x: 'right',
+          y: 'center'
+        },
         xAxis: {
           data: this.time
         },

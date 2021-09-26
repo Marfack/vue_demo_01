@@ -10,9 +10,14 @@ export default {
       option: {
         color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
         title: {
-          text: '雷达图-月度评分'
+          text: '雷达图-月度评分',
+          x: 'center'
         },
-        legend: {},
+        legend: {
+          orient: 'vertical',
+          x: 'right',
+          y: 'center'
+        },
         radar: [
           {
             indicator: [

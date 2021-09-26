@@ -9,7 +9,8 @@ export default {
     return {
       option: {
         title: {
-          text: '柱状图-月度情感值信息'
+          text: '柱状图-月度情感值信息',
+          x: 'center'
         },
         tooltip: {
           trigger: 'axis',

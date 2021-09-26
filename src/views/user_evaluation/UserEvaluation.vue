@@ -109,7 +109,7 @@ export default {
 
 <style scoped>
 .views {
-  padding: 80px 100px 400px 100px
+  padding: 20px 100px 200px 100px
 }
 
 .box-card {

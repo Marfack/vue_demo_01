@@ -9,7 +9,8 @@ export default {
     return {
       option: {
         title: {
-          text: '柱状图-月度综合平均得分'
+          text: '柱状图-月度综合平均得分',
+          x: 'center'
         },
         tooltip: {
           trigger: 'axis',

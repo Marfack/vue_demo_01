@@ -1,15 +1,40 @@
 <template>
   <el-scrollbar>
     <div class="views" v-if="!$store.state.loading">
-      <word-cloud :wordFrequency="wordFrequency"></word-cloud>
-      <score :platform="platform" :score="score"></score>
-      <spot-avg-score :spotAvgScore="avgViewScore"></spot-avg-score>
-      <avg-score :time="time" :avgScore="avgScore"></avg-score>
-      <spot-avg-sentiment
-        :time="time"
-        :spotAvgSentiment="spotAvgSentiment"
-      ></spot-avg-sentiment>
-      <spot-avg-line :time="time" :spotAvgLine="spotAvgLine"></spot-avg-line>
+      <div class="demo-collapse">
+        <el-collapse v-model="activeName" accordion>
+          <el-collapse-item title="热词词频统计" name="1">
+            <word-cloud :wordFrequency="wordFrequency"></word-cloud>
+          </el-collapse-item>
+          <el-collapse-item title="月度评分" name="2">
+            <spot-avg-line
+              :time="time"
+              :spotAvgLine="spotAvgLine"
+            ></spot-avg-line>
+          </el-collapse-item>
+          <el-collapse-item title="月度综合平均得分" name="3">
+            <avg-score :time="time" :avgScore="avgScore"></avg-score>
+          </el-collapse-item>
+          <el-collapse-item title="月度情感值信息" name="4">
+            <spot-avg-sentiment
+              :time="time"
+              :spotAvgSentiment="spotAvgSentiment"
+            ></spot-avg-sentiment>
+          </el-collapse-item>
+        </el-collapse>
+      </div>
+      <el-card class="box-card" shadow="hover">
+        <template #header>
+          <div class="card-header">
+            <span>景区评分</span>
+          </div>
+        </template>
+        <el-table :data="score" style="width: 100%">
+          <el-table-column prop="platform" label="平台" width="150" />
+          <el-table-column prop="score" label="评分" width="50" />
+        </el-table>
+      </el-card>
+      <!-- <spot-avg-score :spotAvgScore="avgViewScore"></spot-avg-score> -->
     </div>
   </el-scrollbar>
 </template>
@@ -35,7 +60,8 @@ export default {
   data() {
     return {
       index: 2,
-      data: []
+      data: [],
+      activeName: '1'
     }
   },
   props: {
@@ -43,18 +69,9 @@ export default {
     reload: Boolean
   },
   computed: {
-    platform: {
-      get() {
-        return this.data[0].map(item => {
-          return item.platform
-        })
-      }
-    },
     score: {
       get() {
-        return this.data[0].map(item => {
-          return item.score
-        })
+        return this.data[0]
       }
     },
     wordFrequency: {
@@ -176,6 +193,18 @@ export default {
 
 <style scoped>
 .views {
-  padding: 80px 100px 400px 100px;
+  padding: 80px 100px 0 100px;
 }
+
+.box-card {
+  width: 13%;
+  position: fixed;
+  top: 240px;
+  right: 42px;
+}
+
+.el-card__body {
+  height: 15px;
+}
+
 </style>

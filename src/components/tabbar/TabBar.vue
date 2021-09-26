@@ -13,9 +13,9 @@
       <div style="width: 40px"></div>
       <el-menu-item style="height: 100px; width: 220px; text-align: center; font-size: 22px; padding-top: 20px" index="/">乡村画像</el-menu-item>
       <div style="width: 40px"></div>
-      <el-menu-item style="height: 100px; width: 220px; text-align: center; font-size: 22px; padding-top: 20px" index="/user_evaluation">游客评价</el-menu-item>
+      <el-menu-item style="height: 100px; width: 220px; text-align: center; font-size: 22px; padding-top: 20px" index="/user_evaluation">游客评论</el-menu-item>
       <div style="width: 40px"></div>
-      <el-menu-item style="height: 100px; width: 220px; text-align: center; font-size: 22px; padding-top: 20px" index="/comp_evaluation">综合评估</el-menu-item>
+      <el-menu-item style="height: 100px; width: 220px; text-align: center; font-size: 22px; padding-top: 20px" index="/comp_evaluation">综合评价</el-menu-item>
       <div style="width: 40px"></div>
       <el-menu-item style="height: 100px; width: 220px; text-align: center; font-size: 22px; padding-top: 20px" index="/heat">媒体热度</el-menu-item>
     </el-menu>

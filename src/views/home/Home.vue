@@ -86,7 +86,7 @@ export default {
 
 <style scoped>
 .views {
-  padding: 20px 100px 400px 100px
+  padding: 20px 100px 150px 100px
 }
 
 .pictures {

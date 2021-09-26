@@ -20,6 +20,11 @@ export default [
         component: () => import('@/views/comprehensive_evaluation/CompEvaluation')
     },
     {
+        name: 'Forbidden',
+        path: '/403',
+        component: () => import('@/views/errors/403')
+    },
+    {
         name: 'notfound',
         path: '/404',
         component: () => import('@/views/errors/404')

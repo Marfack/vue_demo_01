@@ -1,5 +1,5 @@
 <template>
-  <div id="spot-monthly-line" style="width: 600px; height: 400px; margin: auto"></div>
+  <div id="spot-monthly-line" style="width: 70%; height: 500px; margin: auto; margin-top: 100px; margin-bottom: 200px"></div>
 </template>
 
 <script>
@@ -9,7 +9,8 @@ export default {
     return {
       option: {
         title: {
-          text: '折线图-百度指数信息'
+          text: '折线图-百度指数信息',
+          x: 'center'
         },
         tooltip: {
           trigger: 'axis',
@@ -20,13 +21,15 @@ export default {
             }
           }
         },
-        legend: {},
+        legend: {
+          orient: 'vertical',
+          x: 'right',
+          y: 'center'
+        },
         xAxis: {
           data: this.time
         },
         yAxis: {
-            min: 0,
-            max: this.max
         },
         series: this.spotMonthlyLine
       }
@@ -34,8 +37,7 @@ export default {
   },
   props: {
     time: Array,
-    spotMonthlyLine: Array,
-    max: Number
+    spotMonthlyLine: Array
   },
   mounted() {
     this.$echarts.init(document.getElementById('spot-monthly-line')).setOption(this.option)

@@ -9,7 +9,8 @@ export default {
     return {
       option: {
         title: {
-          text: '柱状图-平台评分信息'
+          text: '柱状图-平台评分信息',
+          x: 'center'
         },
         xAxis: {
           type: 'category',

@@ -1,5 +1,5 @@
 <template>
-  <div id="wordcloud"></div>
+  <div id="spot-baidu-bag-wordcloud"></div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
     return {
       option: {
         title: {
-          text: '热词词频统计',
+          text: '百度评论观点词频统计',
           x: 'center'
         },
         tooltip: {
@@ -19,7 +19,7 @@ export default {
         series: [{
           name: '词频统计',
           type: 'wordCloud',
-          shape: 'smooth',
+          shape: 'circle',
           sizeRange: [6, 66],
           gridSize: 8,
           size: ['100%', '100%'],
@@ -35,10 +35,8 @@ export default {
               ].join(',') + ')';
             }
           },
-          left: 'center',
+          left: 'right',
           top: 'center',
-          right: null,
-          bottom: null,
           width: '100%',
           height: '100%',
           data: this.wordFrequency
@@ -50,15 +48,15 @@ export default {
     wordFrequency: Array
   },
   mounted() {
-    this.$echarts.init(document.getElementById('wordcloud')).setOption(this.option)
+    this.$echarts.init(document.getElementById('spot-baidu-bag-wordcloud')).setOption(this.option)
   }
 }
 </script>
 
 <style>
-#wordcloud {
-  height: 450px;
-  width: 450px;
+#spot-baidu-bag-wordcloud {
+  height: 700px;
+  width: 70%;
   text-align: center;
   margin: auto;
 }
